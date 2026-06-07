@@ -297,7 +297,27 @@
         <div class="project-num">01 / 03</div>
         <div class="project-title">ChessPlayer</div>
         <div class="project-subtitle">Chess Analysis Platform — v3.0.0</div>
-        <p class="project-desc">Full-featured chess analysis GUI built from scratch in PySide6/QML. Drag-and-drop board, animated evaluation bar, annotatable PGN editor with dirty-state tracking, and a pre-built position-tree database over a 6M+ game library. Strategic commentary engine backed by Nimzowitsch's classical theory.</p>
+        <p class="project-desc">A chess analysis platform built from scratch in PySide6/QML, complete with all the standard features found on Chess.com — with an intelligent coaching engine currently in active development. </p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
+          <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">Blitz — Tal / Nezhmetdinov</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Throw everything at the enemy king. Material is a resource to be spent, not hoarded.</div>
+          </div>
+          <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">Flank / Squeeze — Carlsen / Karpov</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Slowly suffocate. Accumulate small advantages. Take space, restrict options, and wait for collapse.</div>
+          </div>
+          <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">Fortress — Botvinnik / Petrosian</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Accept it. Lock the position down, neutralize the winning plan, and wait for overextension.</div>
+          </div>
+          <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">Feint — Petrosian / Fischer</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Pretend to go left, then go right. The opponent reacts to the wrong danger.</div>
+          </div>
+        </div>
+        <p class="project-desc" style="margin-top:0.75rem;">The centrepiece is a deterministic, rule-based coaching engine  — not AI. It identifies strategic patterns across four classical styles (Tal's attacking blitz, Carlsen's positional squeeze, Petrosian's fortress, and Fischer's feint) through layered metric scoring: king exposure, space control, piece mobility, pawn structure, material balance, and tactical detection. Every output sentence is assembled from a hand-authored phrase database drawn from Nimzowitsch's <em>My System</em>, with placeholders filled by real board data — specific squares, pieces, and files. No language is generated at runtime. Every coaching line is deterministic and auditable.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">The application is built on a strict layered architecture — the GUI communicates exclusively through a custom Qt/QML signal bridge with no widget touching python-chess directly. The backend is backed by a 6M+ game SQLite library. Games are stored as byte offsets into the original PGN files — no game text is duplicated in the database — enabling lazy-loaded scrolling across millions of indexed games with sub-millisecond queries. A pre-built position-tree database compressed with pickle stores opening continuations, powering a chess.com-style explorer that returns Grandmaster statistics from any board state instantly. The project is unit tested at every layer, with validation positions drawn from historic GM games to verify extractor thresholds and strategy classification accuracy.</p>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PySide6</span>
           <span class="tag blue">QML</span><span class="tag blue">SQLite</span>
