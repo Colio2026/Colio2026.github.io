@@ -93,13 +93,9 @@
 
   .project-screenshots { position: relative; overflow: hidden; background: #060809; min-height: 320px; }
   .screenshot-stack { position: relative; width: 100%; height: 100%; min-height: 320px; }
-  .screenshot-stack img { position: absolute; width: 90%; border: 1px solid var(--border); transition: transform 0.4s; cursor: pointer; }
-  .screenshot-stack img:nth-child(1) { top: 8%; left: 5%; z-index: 3; transform: rotate(-1deg); }
-  .screenshot-stack img:nth-child(2) { top: 16%; left: 12%; z-index: 2; transform: rotate(1.5deg); }
-  .screenshot-stack img:nth-child(3) { top: 24%; left: 6%; z-index: 1; transform: rotate(-0.5deg); }
-  .screenshot-stack:hover img:nth-child(1) { transform: rotate(-2deg) translateX(-8px) translateY(-8px); }
-  .screenshot-stack:hover img:nth-child(2) { transform: rotate(0deg) translateX(4px); }
-  .screenshot-stack:hover img:nth-child(3) { transform: rotate(2deg) translateX(8px) translateY(8px); }
+  .screenshot-stack { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; justify-content: center; }
+  .screenshot-stack img { position: static; width: 100%; border: 1px solid var(--border); transition: opacity 0.2s; cursor: pointer; transform: none !important; }
+  .screenshot-stack img:hover { opacity: 0.85; }
 
   .project-info { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; }
   .project-num { font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 0.5rem; }
@@ -297,7 +293,7 @@
         <div class="project-num">01 / 03</div>
         <div class="project-title">ChessPlayer</div>
         <div class="project-subtitle">Chess Analysis Platform — v3.0.0</div>
-        <p class="project-desc">A chess analysis platform built from scratch in PySide6/QML, complete with all the standard features found on Chess.com — with an intelligent coaching engine currently in active development. </p>
+        <p class="project-desc">A chess analysis platform built from scratch in PySide6/QML, complete with all the standard features found on Chess.com, with an intelligent coaching engine currently in active development.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">Blitz — Tal / Nezhmetdinov</div>
@@ -316,8 +312,8 @@
             <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Pretend to go left, then go right. The opponent reacts to the wrong danger.</div>
           </div>
         </div>
-        <p class="project-desc" style="margin-top:0.75rem;">The centrepiece is a deterministic, rule-based coaching engine  — not AI. It identifies strategic patterns across four classical styles (Tal's attacking blitz, Carlsen's positional squeeze, Petrosian's fortress, and Fischer's feint) through layered metric scoring: king exposure, space control, piece mobility, pawn structure, material balance, and tactical detection. Every output sentence is assembled from a hand-authored phrase database drawn from Nimzowitsch's <em>My System</em>, with placeholders filled by real board data — specific squares, pieces, and files. No language is generated at runtime. Every coaching line is deterministic and auditable.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">The application is built on a strict layered architecture — the GUI communicates exclusively through a custom Qt/QML signal bridge with no widget touching python-chess directly. The backend is backed by a 6M+ game SQLite library. Games are stored as byte offsets into the original PGN files — no game text is duplicated in the database — enabling lazy-loaded scrolling across millions of indexed games with sub-millisecond queries. A pre-built position-tree database compressed with pickle stores opening continuations, powering a chess.com-style explorer that returns Grandmaster statistics from any board state instantly. The project is unit tested at every layer, with validation positions drawn from historic GM games to verify extractor thresholds and strategy classification accuracy.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">The centrepiece is a deterministic, rule-based coaching engine, not AI. It identifies strategic patterns across four classical styles (Tal's attacking blitz, Carlsen's positional squeeze, Petrosian's fortress, and Fischer's feint) through layered metric scoring: king exposure, space control, piece mobility, pawn structure, material balance, and tactical detection. Every output sentence is assembled from a hand-authored phrase database drawn from Nimzowitsch's <em>My System</em>, with placeholders filled by real board data including specific squares, pieces, and files. No language is generated at runtime. Every coaching line is deterministic and auditable.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">The application is built on a strict layered architecture where the GUI communicates exclusively through a custom Qt/QML signal bridge with no widget touching python-chess directly. The backend is built on a 6M+ game SQLite library where games are stored as byte offsets into the original PGN files, with no game text duplicated in the database, enabling lazy-loaded scrolling across millions of indexed games with sub-millisecond queries. A pre-built position-tree database compressed with pickle stores opening continuations, powering a chess.com-style explorer that returns Grandmaster statistics from any board state instantly. The project is unit tested at every layer, with validation positions drawn from historic GM games to verify extractor thresholds and strategy classification accuracy.</p>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PySide6</span>
           <span class="tag blue">QML</span><span class="tag blue">SQLite</span>
@@ -325,17 +321,12 @@
         </div>
         <div class="project-links"><a href="https://github.com/Colio2026" target="_blank" class="btn btn-secondary">↗ GitHub</a></div>
       </div>
-    </div>
-  </div>
-
-  <!-- FisBot -->
-  <div class="project-card fade-in">
-    <div class="project-layout reverse">
-      <div class="project-info">
-        <div class="project-num">02 / 03</div>
+      <div class="project-num">02 / 03</div>
         <div class="project-title">FisBot</div>
         <div class="project-subtitle">Fire Inspection Safety Robot</div>
-        <p class="project-desc">Remotely operated ground vehicle for firefighting reconnaissance. Three-tier embedded architecture: PySide6 laptop GUI, ESP32 WiFi TCP bridge, and Arduino Mega hardware controller over UART. Real-time thermal heatmap overlay for heat signature detection through smoke.</p>
+        <p class="project-desc">A remotely operated ground vehicle built for firefighting reconnaissance, designed and deployed for ELEC 3907. The system runs on a three-tier embedded architecture: a PySide6 laptop GUI, an ESP32 WiFi bridge, and an Arduino Mega handling all low-level hardware control.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">The ESP32 runs as a standalone WiFi access point, meaning no router is required on site. Drive commands travel from keypress to spinning wheels in under 100ms: the GUI sends JSON over TCP, the ESP32 translates and forwards compact ASCII frames over UART, and the Mega processes them in a non-blocking cooperative scheduler with no delay calls anywhere in the main loop. Telemetry transmission rate was deliberately chosen to avoid starving the motor loop, since clocking out a full sensor JSON packet over UART takes long enough to matter.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">Motor acceleration uses a PWM soft-ramp that builds speed gradually over roughly a second, preventing mechanical shock and current surges on startup. Stopping uses active H-bridge braking rather than coasting for sharper halts. A deadman timeout fires a hard brake if the connection drops, so the robot stops automatically rather than driving into a wall. The thermal overlay composites the AMG8833 8x8 sensor array onto the live webcam feed using a JET colormap and bilinear interpolation, blending heat signature data over the camera image in real time. The full sensor suite covers internal temperature, ambient temperature and humidity, combustible gas, ultrasonic distance, and water level.</p>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PySide6</span>
           <span class="tag blue">Arduino C++</span><span class="tag blue">ESP32</span>
