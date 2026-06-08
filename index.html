@@ -93,7 +93,7 @@
 
   .project-screenshots { overflow: hidden; background: #060809; padding: 2rem 0;}
   .screenshot-stack { display: flex; flex-direction: column; align-items: center; gap: 2rem;}
-  .screenshot-stack img { position: static; width: 90%; border: 1px solid var(--border); transition: transform 0.4s; cursor: pointer;}
+  .screenshot-stack img { position: static; width: 110%; border: 1px solid var(--border); transition: transform 0.4s; cursor: pointer;}
   .screenshot-stack img:nth-child(1) { transform: rotate(-1deg); margin-right: 40px;}
   .screenshot-stack img:nth-child(2) { transform: rotate(1.5deg); margin-left: 60px; }
   .screenshot-stack img:nth-child(3) { transform: rotate(-0.5deg); margin-right: 30px; }
@@ -214,6 +214,7 @@
     .project-layout.reverse { direction: ltr; }
     .hero-stats { gap: 1.5rem; flex-wrap: wrap; } h1 { font-size: 3rem; }
     footer { padding: 2rem 1.5rem; } .exp-header { flex-direction: column; }
+    .hero-inner { padding-top: 7rem; }
   }
 </style>
 </head>
@@ -238,7 +239,7 @@
     <div class="hero-tag">Electrical Engineer — Carleton University</div>
     <h1>Cole<br><span>Foster</span></h1>
     <p class="hero-sub">
-      Carleton EE with hands-on experience across <em>embedded systems</em>, software development, and systems engineering in a defense environment.
+      Carleton EE with hands-on experience across <em>software development</em>, <em>systems engineering</em>, and <em>embedded systems</em>. 
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -399,22 +400,23 @@
       <div class="skill-pills">
         <span class="pill">Python</span><span class="pill">C / C++</span><span class="pill">Golang</span>
         <span class="pill">Java</span><span class="pill">Verilog</span><span class="pill">JavaScript</span>
-        <span class="pill">Arduino</span><span class="pill">PowerShell</span><span class="pill">Robot Framework</span>
+        <span class="pill">Arduino</span><span class="pill">PowerShell</span>
       </div>
     </div>
     <div class="skill-group fade-in">
       <div class="skill-group-label">Frameworks & Libraries</div>
       <div class="skill-pills">
         <span class="pill">PySide6 / Qt</span><span class="pill">QML</span><span class="pill">OpenCV</span>
-        <span class="pill">python-chess</span><span class="pill">NumPy</span><span class="pill">SQLite3</span>
-        <span class="pill">ArduinoJson</span><span class="pill">Stockfish UCI</span>
+        <span class="pill">SciPy / Matplotlib</span><span class="pill">NumPy</span><span class="pill">SQLite3</span>
+        <span class="pill">python-chess</span><span class="pill">Stockfish UCI</span>
+        <span class="pill">Threading / concurrent.futures</span><span class="pill">Python Pickle</span>
       </div>
     </div>
     <div class="skill-group fade-in">
       <div class="skill-group-label">Hardware & Embedded</div>
       <div class="skill-pills">
-        <span class="pill">ESP32</span><span class="pill">Arduino Mega</span><span class="pill">Basys-3 FPGA</span>
-        <span class="pill">NEXYS A7 FPGA</span><span class="pill">PWM / H-Bridge</span>
+        <span class="pill">ESP32</span><span class="pill">Arduino</span><span class="pill">Raspberry Pi</span>
+        <span class="pill">Basys-3 FPGA</span><span class="pill">NEXYS A7 FPGA</span><span class="pill">PWM / H-Bridge</span>
         <span class="pill">UART / TCP</span><span class="pill">Vivado</span><span class="pill">NI Multisim</span>
       </div>
     </div>
@@ -423,7 +425,7 @@
       <div class="skill-pills">
         <span class="pill">GitLab / GitHub</span><span class="pill">CI/CD Pipelines</span>
         <span class="pill">Artifactory</span><span class="pill">Confluence</span>
-        <span class="pill">VS Code</span><span class="pill">AGILE / SCRUM</span><span class="pill">Adobe CC</span>
+        <span class="pill">VS Code</span><span class="pill">AGILE / SCRUM</span><span class="pill">Robot Framework</span>
       </div>
     </div>
     <div class="skill-group fade-in">
