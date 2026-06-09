@@ -91,11 +91,9 @@
   .project-layout.reverse { direction: rtl; }
   .project-layout.reverse > * { direction: ltr; }
 
-  .project-screenshots { overflow: hidden; background: #060809; padding: 2rem 0;}
-  .screenshot-stack { display: flex; flex-direction: column; align-items: center; gap: 2rem;}
-  .screenshot-stack img { position: static; width: 110%; border: 1px solid var(--border); transition: transform 0.4s; cursor: pointer;}
+  .project-screenshots { overflow: visible; background: #060809; padding: 0; display: flex; align-items: center; }
   .screenshot-stack img:nth-child(1) { transform: rotate(-1deg); margin-right: 40px;}
-  .screenshot-stack img:nth-child(2) { transform: rotate(1.5deg); margin-left: 60px; }
+  .screenshot-stack img { position: static; width: 120%; border: 1px solid var(--border); transition: transform 0.4s; cursor: pointer; }
   .screenshot-stack img:nth-child(3) { transform: rotate(-0.5deg); margin-right: 30px; }
   .screenshot-stack img:hover { transform: scale(1.02) rotate(var(--rot, 0deg)); }
  
