@@ -254,7 +254,7 @@
     <div class="hero-tag">Electrical Engineer — Carleton University</div>
     <h1>Cole<br><span>Foster</span></h1>
     <p class="hero-sub">
-      Carleton EE with hands-on experience across <em>software development</em>, <em>systems engineering</em>, and <em>embedded systems</em>. 
+      Carleton EE with hands-on experience in <em>software development</em>, <em>systems engineering</em>, and <em>machine learning</em> — currently building a neural chess coach trained on 55GB of master game data.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -264,8 +264,8 @@
     <div class="hero-stats">
       <div><div class="stat-num">4th Year</div><div class="stat-label">EE Student</div></div>
       <div><div class="stat-num">1yr</div><div class="stat-label">Intern</div></div>
-      <div><div class="stat-num">3</div><div class="stat-label">Major Projects</div></div>
-      <div><div class="stat-num">4+</div><div class="stat-label">Languages</div></div>
+      <div><div class="stat-num">0.678</div><div class="stat-label">Macro F1</div></div>
+      <div><div class="stat-num">6.9M</div><div class="stat-label">Model Params</div></div>
     </div>
   </div>
 </div>
@@ -306,44 +306,45 @@
     <div class="project-layout">
       <div class="project-screenshots">
         <div class="screenshot-stack">
-          <img src="screenshots\nimzo-net.png">
-          <img src="screenshots\coachboard_alpha.png">
-          <img src="screenshots\pgn_editor.png">
-          <img src="screenshots\variations_tab.png">
-          <img src="screenshots\save_game.png">
+          <img src="screenshots/nimzo-net.png">
+          <img src="screenshots/coachboard_alpha.png">
+          <img src="screenshots/pgn_editor.png">
+          <img src="screenshots/variations_tab.png">
+          <img src="screenshots/save_game.png">
         </div>
       </div>
       <div class="project-info">
         <div class="project-num">01 / 03</div>
-        <div class="project-title">ChessPlayer</div>
-        <div class="project-subtitle">Chess Analysis Platform — v3.0.0</div>
-                <p class="project-desc">A chess analysis platform built from scratch in PySide6/QML, complete with all the standard features found on Chess.com, with an intelligent coaching engine currently in active development.</p>
+        <div class="project-title">ChessPlayer — NimzoNet</div>
+        <div class="project-subtitle">MoE Neural Chess Coach · Analysis Platform · v3.0.0</div>
+        <p class="project-desc">A full-featured chess analysis platform built from scratch in PySide6 and QML. The centrepiece is <em style="color:var(--accent);font-style:normal;">NimzoNet</em> — a 6.9M-parameter Mixture-of-Experts neural network trained to identify 49 chess concepts by name, from <em style="font-style:italic;">pin</em> and <em style="font-style:italic;">fork</em> to <em style="font-style:italic;">weak_square</em> and <em style="font-style:italic;">prophylaxis</em>, directly from board position, full game history, and spatial heuristics.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">Blitz — Tal / Nezhmetdinov</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Throw everything at the enemy king. Material is a resource to be spent, not hoarded.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">6.9M Parameters — MoE Classifier</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">5 expert heads (Tactical / Structural / Pawn / Endgame / Strategic) gated by a 501-class ECO opening embedding.</div>
           </div>
           <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">Flank / Squeeze — Carlsen / Karpov</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Slowly suffocate. Accumulate small advantages. Take space, restrict options, and wait for collapse.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">0.6785 Macro F1 — 49 Concepts</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Calibrated on 190K test examples across all 49 concept labels. Per-class thresholds sweep-calibrated post-training.</div>
           </div>
           <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">Fortress — Botvinnik / Petrosian</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Accept it. Lock the position down, neutralize the winning plan, and wait for overextension.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">1.9M Training Examples — 55GB+ Data</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Master games, Lichess 6M puzzle CSV, and annotated PGNs — assembled through a full parse → ingest → cache → train pipeline.</div>
           </div>
           <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">Feint — Petrosian / Fischer</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;font-style:italic;">Pretend to go left, then go right. The opponent reacts to the wrong danger.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">3,779-dim Features — B1–B9 Spatial</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Bitboard spatial heuristics: pin maps, fork maps, pawn islands, outpost squares, mating pressure, and 46 algorithmic concept detectors.</div>
           </div>
         </div>
-        <p class="project-desc" style="margin-top:0.75rem;">The centrepiece is a deterministic, rule-based coaching engine, not AI. It identifies strategic patterns across four classical styles (Tal's attacking blitz, Carlsen's positional squeeze, Petrosian's fortress, and Fischer's feint) through layered metric scoring: king exposure, space control, piece mobility, pawn structure, material balance, and tactical detection. Every output sentence is assembled from a hand-authored phrase database drawn from Nimzowitsch's <em>My System</em>, with placeholders filled by real board data including specific squares, pieces, and files. No language is generated at runtime. Every coaching line is deterministic and auditable.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">The application is built on a strict layered architecture where the GUI communicates exclusively through a custom Qt/QML signal bridge with no widget touching python-chess directly. The backend is built on a 6M+ game SQLite library where games are stored as byte offsets into the original PGN files, with no game text duplicated in the database, enabling lazy-loaded scrolling across millions of indexed games with sub-millisecond queries. A pre-built position-tree database compressed with pickle stores opening continuations, powering a chess.com-style explorer that returns Grandmaster statistics from any board state instantly. The project is unit tested at every layer, with validation positions drawn from historic GM games to verify extractor thresholds and strategy classification accuracy.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">NimzoNet takes board position, move one-hot (128-dim), 3,779-dim spatial feature vector (B1–B9 bitboard blocks), 82 binary algorithmic concept flags, 14 Stockfish classical eval terms, and a GRU encoding full game history. A RAG layer retrieves human-annotated commentary from historic master games to explain each concept in the coach panel. The live integration includes ECO opening identification, a Before/After/Δ Stockfish evaluation table per recommended line, weak-square overlay computed directly from bitboard outpost logic, and a confidence badge on each coach card.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">The platform backend indexes 6M+ games as byte offsets into the original PGN files — no game text duplicated — enabling lazy-loaded scrolling across millions of records with sub-millisecond SQLite queries. A pre-built position-tree powers a GM statistics explorer from any board state. The GUI communicates exclusively through a Qt/QML signal bridge with no widget layer touching python-chess directly.</p>
         <div class="tag-row">
-          <span class="tag accent">Python</span><span class="tag accent">PySide6</span>
-          <span class="tag blue">QML</span><span class="tag blue">SQLite</span>
-          <span class="tag green">Stockfish UCI</span><span class="tag">Multi-threading</span>
+          <span class="tag accent">Python</span><span class="tag accent">PyTorch</span>
+          <span class="tag blue">PySide6 / Qt</span><span class="tag blue">QML</span>
+          <span class="tag green">MoE · RAG · GRU</span><span class="tag green">Stockfish UCI</span>
+          <span class="tag">SQLite</span><span class="tag">Multi-threading</span>
         </div>
-        <div class="project-links"><a href="https://github.com/Colio2026" target="_blank" class="btn btn-secondary">↗ GitHub</a></div>
+        <div class="project-links"><a href="https://github.com/TheSladTosser" target="_blank" class="btn btn-secondary">↗ GitHub</a></div>
       </div>
     </div>
   </div>
