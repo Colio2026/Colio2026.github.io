@@ -256,7 +256,7 @@
     <div class="hero-tag">Electrical Engineer — Carleton University</div>
     <h1>Cole<br><span>Foster</span></h1>
     <p class="hero-sub">
-      Carleton EE with hands-on experience in <em>software development</em>, <em>systems engineering</em>, and <em>machine learning</em> — currently building a neural chess coach trained on 55GB of master game data.
+      Carleton EE with hands-on experience in <em>software development</em>, <em>systems engineering</em>, and <em>machine learning</em> — currently building a neural chess coach trained to relate board positions to chess literature and terminology.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -265,9 +265,7 @@
     </div>
     <div class="hero-stats">
       <div><div class="stat-num">4th Year</div><div class="stat-label">EE Student</div></div>
-      <div><div class="stat-num">1yr</div><div class="stat-label">Intern</div></div>
-      <div><div class="stat-num">0.678</div><div class="stat-label">Macro F1</div></div>
-      <div><div class="stat-num">6.9M</div><div class="stat-label">Model Params</div></div>
+      <div><div class="stat-num">1yr</div><div class="stat-label">Intern Experience</div></div>
     </div>
   </div>
 </div>
@@ -319,7 +317,7 @@
         <div class="project-num">01 / 03</div>
         <div class="project-title">ChessPlayer — NimzoNet</div>
         <div class="project-subtitle">MoE Neural Chess Coach · Analysis Platform · v3.0.0</div>
-        <p class="project-desc">A full-featured chess analysis platform built from scratch in PySide6 and QML. The centrepiece is <em style="color:var(--accent);font-style:normal;">NimzoNet</em> — a 6.9M-parameter Mixture-of-Experts neural network trained to identify 49 chess concepts by name, from <em style="font-style:italic;">pin</em> and <em style="font-style:italic;">fork</em> to <em style="font-style:italic;">weak_square</em> and <em style="font-style:italic;">prophylaxis</em>, directly from board position, full game history, and spatial heuristics.</p>
+        <p class="project-desc">A full-featured chess analysis platform, designed with the goal of relating and explaining the best stockfish lines using real chess literature. The centrepiece is <em style="color:var(--accent);font-style:normal;">NimzoNet</em> — a 6.9M-parameter Mixture-of-Experts neural network trained to identify 49 chess concepts by name, from <em style="font-style:italic;">pin</em> and <em style="font-style:italic;">fork</em> to <em style="font-style:italic;">weak_square</em> and <em style="font-style:italic;">prophylaxis</em>, directly from board position, full game history, and spatial heuristics.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">6.9M Parameters — MoE Classifier</div>
@@ -338,8 +336,11 @@
             <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Bitboard spatial heuristics: pin maps, fork maps, pawn islands, outpost squares, mating pressure, and 46 algorithmic concept detectors.</div>
           </div>
         </div>
-        <p class="project-desc" style="margin-top:0.75rem;">NimzoNet takes board position, move one-hot (128-dim), 3,779-dim spatial feature vector (B1–B9 bitboard blocks), 82 binary algorithmic concept flags, 14 Stockfish classical eval terms, and a GRU encoding full game history. A RAG layer retrieves human-annotated commentary from historic master games to explain each concept in the coach panel. The live integration includes ECO opening identification, a Before/After/Δ Stockfish evaluation table per recommended line, weak-square overlay computed directly from bitboard outpost logic, and a confidence badge on each coach card.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">The platform backend indexes 6M+ games as byte offsets into the original PGN files — no game text duplicated — enabling lazy-loaded scrolling across millions of records with sub-millisecond SQLite queries. A pre-built position-tree powers a GM statistics explorer from any board state. The GUI communicates exclusively through a Qt/QML signal bridge with no widget layer touching python-chess directly.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">1. NimzoNet takes board position, top engine generated lines, move one-hot (128-dim), 3,779-dim spatial feature vector (B1–B9 bitboard blocks), 82 binary algorithmic concept flags, 14 Stockfish classical eval terms, and a GRU encoding full game history.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">2. A RAG layer retrieves human-annotated commentary from historic master games to explain each concept in the coach panel.  
+        <p class="project-desc" style="margin-top:0.75rem;">3. The live integration includes ECO opening identification, a Before/After/Δ Stockfish evaluation table per recommended line, weak-square overlay computed directly from bitboard outpost logic, and a confidence badge on each coach card.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">4. The platform backend indexes 6M+ games as byte offsets into the original PGN files — no game text duplicated — enabling lazy-loaded scrolling across millions of records with sub-millisecond SQLite queries.</p>
+        <p class="project-desc" style="margin-top:0.75rem;">5. A pre-built position-tree powers a GM statistics explorer from any board state. The GUI communicates exclusively through a Qt/QML signal bridge with no widget layer touching python-chess directly.</p>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PyTorch</span>
           <span class="tag blue">PySide6 / Qt</span><span class="tag blue">QML</span>
