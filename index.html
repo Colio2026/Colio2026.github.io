@@ -256,7 +256,7 @@
     <div class="hero-tag">Electrical Engineer — Carleton University</div>
     <h1>Cole<br><span>Foster</span></h1>
     <p class="hero-sub">
-      Carleton EE with hands-on experience in <em>software development</em>, <em>systems engineering</em>, and <em>machine learning</em> — currently building a neural chess coach trained to relate board positions to chess literature and terminology.
+      Carleton EE with hands-on experience in <em>software development</em>, <em>systems engineering</em>, and <em>machine learning</em> — currently systems and GUI lead on PI-NETS, a capstone tool that uses trained neural-network surrogates to simulate circuit components.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary">View Projects</a>
@@ -285,7 +285,7 @@
     </div>
     <ul class="exp-bullets">
       <li>Developed and maintained automated Python test suites against battle management applications under the LC4ISR sustainment contract</li>
-      <li>Simulation of operational scenarios's for military platforms</li>
+      <li>Simulation of operational scenarios for military platforms</li>
       <li>Contributed to deployment pipeline development and CI/CD infrastructure</li>
       <li>Authored technical and instructional material for software products</li>
       <li>Documentation of system faults, test plans, and test results</li>
@@ -301,53 +301,112 @@
   <div class="section-label">Selected Work</div>
   <h2>Projects</h2>
 
+  <!-- PI-NETS -->
+  <div class="project-card fade-in">
+    <div class="project-layout">
+      <div class="project-screenshots">
+        <div class="screenshot-stack">
+          <img src="screenshots/pinets_block_diagram.png" alt="PI-NETS block-diagram simulator running an LT1001 feedback loop">
+          <img src="screenshots/pinets_compare.png" alt="Two 2N7000 transistor models compared on one plot">
+          <img src="screenshots/pinets_iv_curves.png" alt="2N7000 I-V curves from a trained model with data and theory overlaid">
+          <img src="screenshots/pinets_training_tab.png" alt="Live training curves in the PI-NETS interface">
+          <img src="screenshots/pinets_equation_editor.png" alt="No-code governing equation editor with a typeset preview">
+        </div>
+      </div>
+      <div class="project-info">
+        <div class="project-num">01 / 04</div>
+        <div class="project-title">PI-NETS</div>
+        <div class="project-subtitle">Carleton EE Capstone · Systems &amp; GUI Lead · Neural Circuit Surrogates</div>
+        <p class="project-desc">A desktop application that lets students simulate and compare circuit components with trained neural-network surrogates, without licensed simulators or lab time. Working prototype, with the proof-of-concept demo in November 2026.</p>
+        <p class="project-desc"><em style="color:var(--accent);font-style:normal;">Role:</em> systems engineering and GUI lead. Teammates own the physics, datasets and network training. The application, block-diagram simulator, test system and documentation around the models are my scope, built so the team can take a component from data file to published model without writing code.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
+          <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">636 Automated Tests — CI on Every Push</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">pytest suite with offscreen GUI tests. GitHub Actions runs hygiene, lint and every test on each push.</div>
+          </div>
+          <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">1–9 mV RMS — Verified Against LTspice</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Trained LT1001 blocks wired into a feedback loop tracked a whole-circuit LTspice run across loop gains from 1 to 100, over ±15 V.</div>
+          </div>
+          <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">11K Lines — Application Python</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">GUI, simulator, adapters and library tools, not counting the model package. Another 8K lines of tests.</div>
+          </div>
+          <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">No-Code Model Workflow</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Data import, equation entry, network design, training and publishing all run from the interface.</div>
+          </div>
+        </div>
+        <ul class="exp-bullets" style="margin-bottom:1.5rem;">
+          <li>Defined the GUI-to-model interface: one adapter contract with mock and PyTorch backends, so the application and its tests ran before any model was trained.</li>
+          <li>Built a Simulink-style block-diagram simulator with transient and DC sweep runs, algebraic feedback-loop solving, reusable subsystems and reference-data overlays.</li>
+          <li>Built the user and admin workflows: admins take a model from draft to published, users see only models that passed the accuracy gate, and run inputs stay inside each model's trained range.</li>
+          <li>Built the analysis views: I-V and polar diagrams, device comparison, data and theory overlays, live training curves, and CSV, Excel and JSON export.</li>
+          <li>Added portable model libraries: zip export and import that checks every file's SHA-256 hash before anything is written.</li>
+          <li>Automated setup, quality checks and merges with PowerShell and GitHub Actions, including a merge script that refuses a failing pull request.</li>
+          <li>Wrote the system documentation: project README, step-by-step user guide and a README for every package.</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag accent">Python</span><span class="tag accent">PySide6 / Qt</span>
+          <span class="tag blue">Systems Integration</span><span class="tag blue">Interface Design</span>
+          <span class="tag green">Verification &amp; Validation</span><span class="tag green">CI/CD</span>
+          <span class="tag">pytest</span><span class="tag">GitHub Actions</span><span class="tag">PowerShell</span><span class="tag">Matplotlib</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ChessPlayer -->
   <div class="project-card fade-in">
     <div class="project-layout">
       <div class="project-screenshots">
         <div class="screenshot-stack">
-          <img src="screenshots/nimzo-net.png">
-          <img src="screenshots/coachboard_alpha.png">
-          <img src="screenshots/pgn_editor.png">
-          <img src="screenshots/variations_tab.png">
-          <img src="screenshots/save_game.png">
+          <img src="screenshots/nimzo-net.png" alt="NimzoNet coach panel with concept labels and evaluation tables">
+          <img src="screenshots/coachboard_alpha.png" alt="Coach board showing a recommended line and weak-square overlay">
+          <img src="screenshots/pgn_editor.png" alt="Game browser, board and engine analysis">
+          <img src="screenshots/variations_tab.png" alt="Continuation statistics from the game library">
+          <img src="screenshots/save_game.png" alt="PGN export dialog">
         </div>
       </div>
       <div class="project-info">
-        <div class="project-num">01 / 03</div>
+        <div class="project-num">02 / 04</div>
         <div class="project-title">ChessPlayer — NimzoNet</div>
         <div class="project-subtitle">MoE Neural Chess Coach · Analysis Platform · v3.0.0</div>
-        <p class="project-desc">A full-featured chess analysis platform, designed with the goal of relating and explaining the best stockfish lines using real chess literature. The centrepiece is <em style="color:var(--accent);font-style:normal;">NimzoNet</em> — a 6.9M-parameter Mixture-of-Experts neural network trained to identify 49 chess concepts by name, from <em style="font-style:italic;">pin</em> and <em style="font-style:italic;">fork</em> to <em style="font-style:italic;">weak_square</em> and <em style="font-style:italic;">prophylaxis</em>, directly from board position, full game history, and spatial heuristics.</p>
+        <p class="project-desc">A desktop chess platform that explains the best Stockfish lines in the language of chess literature instead of only scoring them. Its centrepiece is <em style="color:var(--accent);font-style:normal;">NimzoNet</em>, a 6.9M-parameter Mixture-of-Experts network trained to name 49 concepts, from <em style="font-style:italic;">pin</em> and <em style="font-style:italic;">fork</em> to <em style="font-style:italic;">weak_square</em> and <em style="font-style:italic;">prophylaxis</em>, from the board, the candidate move and the full game history.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">6.9M Parameters — MoE Classifier</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">5 expert heads (Tactical / Structural / Pawn / Endgame / Strategic) gated by a 501-class ECO opening embedding.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Five expert heads (Tactical, Structural, Pawn, Endgame, Strategic), routed by a gating network with a 501-class ECO opening embedding.</div>
           </div>
           <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">0.6785 Macro F1 — 49 Concepts</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Calibrated on 190K test examples across all 49 concept labels. Per-class thresholds sweep-calibrated post-training.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Scored on 190,037 held-out test examples, with per-class thresholds tuned on the separate validation split.</div>
           </div>
           <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">1.9M Training Examples — 55GB+ Data</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Master games, Lichess 6M puzzle CSV, and annotated PGNs — assembled through a full parse → ingest → cache → train pipeline.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">1.9M Examples — 21 GB Feature Caches</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Master games, Lichess puzzles and annotated PGNs, assembled through a parse, ingest, cache and train pipeline with memory-mapped caches.</div>
           </div>
           <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">3,779-dim Features — B1–B9 Spatial</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Bitboard spatial heuristics: pin maps, fork maps, pawn islands, outpost squares, mating pressure, and 46 algorithmic concept detectors.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Bitboard maps for pins, forks, pawn islands, outposts and mating pressure, plus 46 algorithmic concept detectors.</div>
           </div>
         </div>
-        <p class="project-desc" style="margin-top:0.75rem;">1. NimzoNet takes board position, top engine generated lines, move one-hot (128-dim), 3,779-dim spatial feature vector (B1–B9 bitboard blocks), 82 binary algorithmic concept flags, 14 Stockfish classical eval terms, and a GRU encoding full game history.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">2. A RAG layer retrieves human-annotated commentary from historic master games to explain each concept in the coach panel.  
-        <p class="project-desc" style="margin-top:0.75rem;">3. The live integration includes ECO opening identification, a Before/After/Δ Stockfish evaluation table per recommended line, weak-square overlay computed directly from bitboard outpost logic, and a confidence badge on each coach card.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">4. The platform backend indexes 6M+ games as byte offsets into the original PGN files — no game text duplicated — enabling lazy-loaded scrolling across millions of records with sub-millisecond SQLite queries.</p>
-        <p class="project-desc" style="margin-top:0.75rem;">5. A pre-built position-tree powers a GM statistics explorer from any board state. The GUI communicates exclusively through a Qt/QML signal bridge with no widget layer touching python-chess directly.</p>
+        <ul class="exp-bullets" style="margin-bottom:1.5rem;">
+          <li>Combined board encoding, candidate move, spatial features, 82 concept flags, 14 Stockfish classical eval terms and a GRU over the game history into one 1,740-dim model input.</li>
+          <li>Built a RAG layer that retrieves human annotations from master games to back up each concept in the coach panel.</li>
+          <li>Integrated the model into a live coach panel with ECO opening identification, Syzygy endgame probes, Before/After/Δ Stockfish tables for each recommended line, and a weak-square overlay.</li>
+          <li>Added direction-aware Schmitt-trigger hysteresis so concepts stay stable while stepping forward and back through a game.</li>
+          <li>Indexed PGN libraries as byte offsets in SQLite, with no game text duplicated: a 4 GB file indexes in minutes and games open in milliseconds.</li>
+          <li>Kept a written experiment log of every run. Three NNUE-based variants stalled at F1 ≤ 0.47, were traced to task misalignment, and were dropped.</li>
+          <li>Kept Qt inside the UI layer, ran Stockfish on a background thread, and used a pre-built position tree for O(1) continuation statistics.</li>
+        </ul>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PyTorch</span>
           <span class="tag blue">PySide6 / Qt</span><span class="tag blue">QML</span>
           <span class="tag green">MoE · RAG · GRU</span><span class="tag green">Stockfish UCI</span>
           <span class="tag">SQLite</span><span class="tag">Multi-threading</span>
         </div>
-        <div class="project-links"><a href="https://github.com/TheSladTosser" target="_blank" class="btn btn-secondary">↗ GitHub</a></div>
+        <div class="project-links"><a href="https://github.com/Colio2026/ChessPlayer---v3.0.0" target="_blank" class="btn btn-secondary">↗ GitHub</a></div>
       </div>
     </div>
   </div>
@@ -356,7 +415,7 @@
   <div class="project-card fade-in">
     <div class="project-layout reverse">
       <div class="project-info">
-        <div class="project-num">02 / 03</div>
+        <div class="project-num">03 / 04</div>
         <div class="project-title">FisBot</div>
         <div class="project-subtitle">Fire Inspection Safety Robot</div>
         <p class="project-desc">A remotely operated ground vehicle built for firefighting reconnaissance, designed and deployed for ELEC 3907. The system runs on a three-tier embedded architecture: a PySide6 laptop GUI, an ESP32 WiFi bridge, and an Arduino Mega handling all low-level hardware control.</p>
@@ -397,7 +456,7 @@
         
       </div>
       <div class="project-info">
-        <div class="project-num">03 / 03</div>
+        <div class="project-num">04 / 04</div>
         <div class="project-title">Egg Timer</div>
         <div class="project-subtitle">Basys-3 / NEXYS A7 FPGA — Verilog / Vivado</div>
         <p class="project-desc">4-digit seven-segment countdown timer on a NEXYS A7 FPGA. 100MHz clock divided through a 4-stage chain (100MHz → 5MHz → 1Hz + 500Hz). Modular FSM design with debounced inputs, BCD countdown logic, and an innovative 8-digit extension that scrolls "ALL DONE" / "GOODBYE" on expiry using a custom alphanumeric 7-segment decoder.</p>
