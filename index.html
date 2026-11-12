@@ -301,56 +301,57 @@
   <div class="section-label">Selected Work</div>
   <h2>Projects</h2>
 
-  <!-- PI-NETS -->
+<!-- P.I.T.S -->
   <div class="project-card fade-in">
     <div class="project-layout">
       <div class="project-screenshots">
         <div class="screenshot-stack">
-          <img src="screenshots/pinets_block_diagram.png" alt="PI-NETS block-diagram simulator running an LT1001 feedback loop">
-          <img src="screenshots/pinets_compare.png" alt="Two 2N7000 transistor models compared on one plot">
-          <img src="screenshots/pinets_iv_curves.png" alt="2N7000 I-V curves from a trained model with data and theory overlaid">
-          <img src="screenshots/pinets_training_tab.png" alt="Live training curves in the PI-NETS interface">
-          <img src="screenshots/pinets_equation_editor.png" alt="No-code governing equation editor with a typeset preview">
+          <img src="screenshots/pinets_block_diagram.png" alt="P.I.T.S block-diagram simulator running a feedback loop of trained blocks">
+          <img src="screenshots/pinets_compare.png" alt="Two transistor models compared on one plot, against theory">
+          <img src="screenshots/pinets_iv_curves.png" alt="I-V curves from a trained model with data and theory overlaid">
+          <img src="screenshots/pinets_training_tab.png" alt="Live training curves and what the run says about where the model missed">
+          <img src="screenshots/pinets_equation_editor.png" alt="No-code governing-equation editor with a typeset preview">
         </div>
       </div>
       <div class="project-info">
         <div class="project-num">01 / 04</div>
-        <div class="project-title">PI-NETS</div>
-        <div class="project-subtitle">Carleton EE Capstone · Systems &amp; GUI Lead · Neural Circuit Surrogates</div>
-        <p class="project-desc">A desktop application that lets students simulate and compare circuit components with trained neural-network surrogates, without licensed simulators or lab time. Working prototype, with the proof-of-concept demo in November 2026.</p>
-        <p class="project-desc"><em style="color:var(--accent);font-style:normal;">Role:</em> systems engineering and GUI lead. Teammates own the physics, datasets and network training. The application, block-diagram simulator, test system and documentation around the models are my scope, built so the team can take a component from data file to published model without writing code.</p>
+        <div class="project-title">P.I.T.S</div>
+        <div class="project-subtitle">Physics-Informed Transfer Surrogates · Carleton EE Capstone · Systems &amp; GUI Lead</div>
+        <p class="project-desc">A desktop workbench that turns a component's data and its physics into a validated neural-network model, then lets students run, compare and design with it in milliseconds, without a simulator licence. In use by the team for its experiments; demonstrated November 2026.</p>
+        <p class="project-desc"><em style="color:var(--accent);font-style:normal;">Role:</em> systems engineering and GUI lead on a four-person team. Teammates own the physics, the datasets and the training code. I own the application, the interfaces between the teams, the verification pipeline and the documentation, built so a model goes from data file to published, gated release without anyone writing code.</p>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">636 Automated Tests — CI on Every Push</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">pytest suite with offscreen GUI tests. GitHub Actions runs hygiene, lint and every test on each push.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">CI/CD: nothing merges red</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">GitHub Actions runs lint and the full suite, GUI included, on every push. One script commits, opens the pull request, waits for the check and merges; a red check is never merged.</div>
           </div>
           <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">1–9 mV RMS — Verified Against LTspice</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Trained LT1001 blocks wired into a feedback loop tracked a whole-circuit LTspice run across loop gains from 1 to 100, over ±15 V.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">Schematic, simulation, network</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Draw a component's circuit or import a SPICE netlist, run it in the app (operating point, AC, noise, transient, harmonic balance), and watch the neural network light up with the live activations of every run.</div>
           </div>
           <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">11K Lines — Application Python</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">GUI, simulator, adapters and library tools, not counting the model package. Another 8K lines of tests.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">Block-diagram simulator</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Simulink-style: wire trained models and ideal parts into a system and run it in time, DC sweep or frequency response (Bode), with algebraic feedback loops, blocks with state and reusable subsystems.</div>
           </div>
           <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">No-Code Model Workflow</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Data import, equation entry, network design, training and publishing all run from the interface.</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">Inverse design</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">State the behaviour you want ("S11 below −10 dB from 2.3 to 2.5 GHz") and a search over thousands of candidate designs returns the inputs that give it, each marked with how far it sits from the model's training data.</div>
           </div>
         </div>
         <ul class="exp-bullets" style="margin-bottom:1.5rem;">
-          <li>Defined the GUI-to-model interface: one adapter contract with mock and PyTorch backends, so the application and its tests ran before any model was trained.</li>
-          <li>Built a Simulink-style block-diagram simulator with transient and DC sweep runs, algebraic feedback-loop solving, reusable subsystems and reference-data overlays.</li>
-          <li>Built the user and admin workflows: admins take a model from draft to published, users see only models that passed the accuracy gate, and run inputs stay inside each model's trained range.</li>
-          <li>Built the analysis views: I-V and polar diagrams, device comparison, data and theory overlays, live training curves, and CSV, Excel and JSON export.</li>
-          <li>Added portable model libraries: zip export and import that checks every file's SHA-256 hash before anything is written.</li>
-          <li>Automated setup, quality checks and merges with PowerShell and GitHub Actions, including a merge script that refuses a failing pull request.</li>
-          <li>Wrote the system documentation: project README, step-by-step user guide and a README for every package.</li>
+          <li>Defined the GUI-to-model contract first, with a mock backend behind it, so the application and its tests were running months before the first trained model existed and the two teams never blocked each other.</li>
+          <li>Designed the release gate: a model reaches students only when enough of its test points fall within a per-output tolerance; a model that slips on a re-score is marked deprecated everywhere it appears, and run inputs cannot leave the range it was trained on.</li>
+          <li>Built held-back validation: every model is also scored, per output and per sweep, on designs it never trained on, and each miss is explained as a fit problem, a data gap or a weak equation. It caught a 99% test score that was 93% on new designs.</li>
+          <li>Specified physics in the loop as a product decision: a component's physics is a typed equation or its own simulated circuit, and feeds the network as inputs, as a loss term or as a grey-box baseline. The team's 900 MHz LNA model built on it holds 99.9% of test points within ±0.5 dB on gain, input match and noise figure.</li>
+          <li>Automated Ansys HFSS to build, mesh and solve a probe-fed patch antenna for every size in a sweep: 108 antennas and 86,508 rows of field data, the probe's coax de-embedded, convergence recorded, resumable after a crash.</li>
+          <li>Built the data path: imports from CSV, Excel, JSON, LTspice exports and Touchstone S-parameter files (one file or a folder of designs), units converted once, every dataset kept with a manifest and its original preserved byte for byte.</li>
+          <li>Extended the component model from scalar inputs to grids of pixels, through the spec, storage, training and inference layers, with a click-to-draw board in the interface, as the backbone for a pixelated-microwave-device study.</li>
+          <li>Wrote the system documentation and the in-app help: a guided tutorial, a glossary, help on every control enforced by a test, and the experiment protocol and decision log the team works from.</li>
         </ul>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PySide6 / Qt</span>
           <span class="tag blue">Systems Integration</span><span class="tag blue">Interface Design</span>
           <span class="tag green">Verification &amp; Validation</span><span class="tag green">CI/CD</span>
-          <span class="tag">pytest</span><span class="tag">GitHub Actions</span><span class="tag">PowerShell</span><span class="tag">Matplotlib</span>
+          <span class="tag">pytest</span><span class="tag">GitHub Actions</span><span class="tag">Ansys HFSS / PyAEDT</span><span class="tag">PowerShell</span><span class="tag">Matplotlib</span>
         </div>
       </div>
     </div>
