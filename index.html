@@ -300,17 +300,16 @@
 <section id="projects">
   <div class="section-label">Selected Work</div>
   <h2>Projects</h2>
-
 <!-- P.I.T.S -->
   <div class="project-card fade-in">
     <div class="project-layout">
       <div class="project-screenshots">
         <div class="screenshot-stack">
-          <img src="screenshots/pinets_block_diagram.png" alt="P.I.T.S block-diagram simulator running a feedback loop of trained blocks">
-          <img src="screenshots/pinets_compare.png" alt="Two transistor models compared on one plot, against theory">
-          <img src="screenshots/pinets_iv_curves.png" alt="I-V curves from a trained model with data and theory overlaid">
-          <img src="screenshots/pinets_training_tab.png" alt="Live training curves and what the run says about where the model missed">
-          <img src="screenshots/pinets_equation_editor.png" alt="No-code governing-equation editor with a typeset preview">
+          <img src="screenshots/pits_run_patch.png" alt="A patch antenna model's curves against its equivalent circuit, with the model's accuracy on test data">
+          <img src="screenshots/pits_calibration.png" alt="Held-back validation: every model scored on designs it never saw, with each weak region explained">
+          <img src="screenshots/pits_inverse_design.png" alt="Inverse design: a search returns antenna sizes that put the S11 dip at 2.45 GHz">
+          <img src="screenshots/pits_schematic.png" alt="Schematic editor with the patch antenna's equivalent circuit">
+          <img src="screenshots/pits_polysim.png" alt="3D view of the patch antenna, imported from Ansys">
         </div>
       </div>
       <div class="project-info">
@@ -322,11 +321,11 @@
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;margin:1rem 0;">
           <div style="border-left:2px solid #c84b4b;padding:0.5rem 0.75rem;background:rgba(200,75,75,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c84b4b;text-transform:uppercase;margin-bottom:0.25rem;">CI/CD: nothing merges red</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">GitHub Actions runs lint and the full suite, GUI included, on every push. One script commits, opens the pull request, waits for the check and merges; a red check is never merged.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">GitHub Actions runs lint and the full suite of 1,186 tests, GUI included, on every push. One script commits, opens the pull request, waits for the check and merges; a red check is never merged.</div>
           </div>
           <div style="border-left:2px solid #4b8fc8;padding:0.5rem 0.75rem;background:rgba(75,143,200,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4b8fc8;text-transform:uppercase;margin-bottom:0.25rem;">Schematic, simulation, network</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Draw a component's circuit or import a SPICE netlist, run it in the app (operating point, AC, noise, transient, harmonic balance), and watch the neural network light up with the live activations of every run.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">Draw a component's circuit or import a SPICE netlist, simulate it in the app (operating point, AC, noise, transient, harmonic balance), use the circuit itself as the model's physics, and export a netlist that runs in LTspice.</div>
           </div>
           <div style="border-left:2px solid #c8a84b;padding:0.5rem 0.75rem;background:rgba(200,168,75,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#c8a84b;text-transform:uppercase;margin-bottom:0.25rem;">Block-diagram simulator</div>
@@ -334,28 +333,30 @@
           </div>
           <div style="border-left:2px solid #4bc87a;padding:0.5rem 0.75rem;background:rgba(75,200,122,0.06);">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;color:#4bc87a;text-transform:uppercase;margin-bottom:0.25rem;">Inverse design</div>
-            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">State the behaviour you want ("S11 below −10 dB from 2.3 to 2.5 GHz") and a search over thousands of candidate designs returns the inputs that give it, each marked with how far it sits from the model's training data.</div>
+            <div style="font-size:0.75rem;color:var(--muted);line-height:1.5;">State the behaviour you want ("S11 below −10 dB from 2.3 to 2.5 GHz") and a search over thousands of candidate designs returns the inputs that give it, each marked with how far it sits from the model's training data, so the real simulator only confirms the shortlist.</div>
           </div>
         </div>
         <ul class="exp-bullets" style="margin-bottom:1.5rem;">
           <li>Defined the GUI-to-model contract first, with a mock backend behind it, so the application and its tests were running months before the first trained model existed and the two teams never blocked each other.</li>
           <li>Designed the release gate: a model reaches students only when enough of its test points fall within a per-output tolerance; a model that slips on a re-score is marked deprecated everywhere it appears, and run inputs cannot leave the range it was trained on.</li>
           <li>Built held-back validation: every model is also scored, per output and per sweep, on designs it never trained on, and each miss is explained as a fit problem, a data gap or a weak equation. It caught a 99% test score that was 93% on new designs.</li>
-          <li>Specified physics in the loop as a product decision: a component's physics is a typed equation or its own simulated circuit, and feeds the network as inputs, as a loss term or as a grey-box baseline. The team's 900 MHz LNA model built on it holds 99.9% of test points within ±0.5 dB on gain, input match and noise figure.</li>
-          <li>Automated Ansys HFSS to build, mesh and solve a probe-fed patch antenna for every size in a sweep: 108 antennas and 86,508 rows of field data, the probe's coax de-embedded, convergence recorded, resumable after a crash.</li>
+          <li>Specified physics in the loop as a product decision: a component's physics is a typed equation or its own simulated circuit, and feeds the network as inputs, as a loss term or as a grey-box baseline. On the probe-fed patch antenna, the circuit alone places 73% of unseen reactance points within tolerance, and the team's model built on it places 96%. The team's 900 MHz LNA model holds 99.9% of test points within ±0.5 dB on gain, input match and noise figure.</li>
+          <li>Automated Ansys HFSS to build, mesh and solve a probe-fed patch antenna for every size in a sweep: 108 antennas and 86,508 rows of data, the probe's coax de-embedded, every solver setting recorded, resumable after a crash. Ansys and LTspice sweeps now start from inside the app.</li>
           <li>Built the data path: imports from CSV, Excel, JSON, LTspice exports and Touchstone S-parameter files (one file or a folder of designs), units converted once, every dataset kept with a manifest and its original preserved byte for byte.</li>
-          <li>Extended the component model from scalar inputs to grids of pixels, through the spec, storage, training and inference layers, with a click-to-draw board in the interface, as the backbone for a pixelated-microwave-device study.</li>
-          <li>Wrote the system documentation and the in-app help: a guided tutorial, a glossary, help on every control enforced by a test, and the experiment protocol and decision log the team works from.</li>
+          <li>Extended the component model from scalar inputs to grids of pixels and to 3D: geometry imported from Ansys, meshes and field exports viewed in the app, and field values fed to the network as inputs, as the backbone for a pixelated-microwave-device study.</li>
+          <li>Packaged the application as a single-file Windows installer that detects Python, the GPU, Ansys and LTspice, sets up the environment and registers an uninstaller.</li>
+          <li>Wrote the system documentation and the in-app help: a guided tutorial, a glossary, help on every control enforced by a test, and software design descriptions to the DI-IPSC-81435A layout. A unit-by-unit design review of the training pipeline found and removed a multi-gigabyte cache leak, with regression tests.</li>
         </ul>
         <div class="tag-row">
           <span class="tag accent">Python</span><span class="tag accent">PySide6 / Qt</span>
           <span class="tag blue">Systems Integration</span><span class="tag blue">Interface Design</span>
           <span class="tag green">Verification &amp; Validation</span><span class="tag green">CI/CD</span>
-          <span class="tag">pytest</span><span class="tag">GitHub Actions</span><span class="tag">Ansys HFSS / PyAEDT</span><span class="tag">PowerShell</span><span class="tag">Matplotlib</span>
+          <span class="tag">pytest</span><span class="tag">GitHub Actions</span><span class="tag">Ansys HFSS / PyAEDT</span><span class="tag">LTspice</span><span class="tag">PyInstaller</span><span class="tag">PowerShell</span><span class="tag">Matplotlib</span>
         </div>
       </div>
     </div>
   </div>
+
 
   <!-- ChessPlayer -->
   <div class="project-card fade-in">
